@@ -48,9 +48,15 @@ app.post('/api/message', function(req, res) {
   }
 });
 
+
 const SpeechToText = new SpeechToTextV1({
-  username: process.env.WATSON_SPEECH_TO_TEXT_USERNAME,
-  password: process.env.WATSON_SPEECH_TO_TEXT_PASSWORD,
+   iam_apikey: '3XdPxGkU7KmVVoW_IQPPIdcqbrXCgdD8g3s9P-A3EQDV',
+  url: 'https://stream.watsonplatform.net/speech-to-text/api'
+  
+});
+
+var speechToText = new SpeechToTextV1({
+ 
 });
 
 //const authService = new AuthorizationV1(SpeechToText.getCredentials());
@@ -68,8 +74,8 @@ app.use(`/api/speech-to-text/token`, (req, res) => {
    });
 
    const TextToSpeech = new TextToSpeechV1({
-     username: process.env.WATSON_TEXT_TO_SPEECH_USERNAME,
-     password: process.env.WATSON_TEXT_TO_SPEECH_PASSWORD,
+    iam_apikey: 'eyY0xOd5lnRm1xmdaF4_1BaHrJm-QwSmOJsJozaA5mjO',
+  url: 'https://stream.watsonplatform.net/text-to-speech/api'
    });
 
    const ttsAuthService = new AuthorizationV1(TextToSpeech.getCredentials());
