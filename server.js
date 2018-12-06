@@ -19,10 +19,18 @@
 
 require('dotenv').config({silent: true});
 
-var server = require('./app');
-var port = process.env.PORT || process.env.VCAP_APP_PORT || 3000;
+var app = require('./app');
+var port = process.env.PORT || 3000;
 
-server.listen(port, function() {
+var server = app.listen(port, function() {
   // eslint-disable-next-line
   console.log('Server running on port: %d', port);
+});
+
+var io = require('socket.io').listen(server);
+
+app.post('/notification', function(req, res) { 
+  console.log('got notification: ' + JSON.stringify(req.body));
+  io.emit('server message', req.body);
+  return res.json();
 });
