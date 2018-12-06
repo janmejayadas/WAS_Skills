@@ -35,3 +35,9 @@ This example is based on the [Conversation Simple Application](https://github.co
 4. Perform steps 1 and 2 in the **To run** section above
 
 5. `cf push`
+
+## Deploy to IBM Cloud
+
+[![Deploy to IBM Cloud](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/janmejayadas/POC_Watson.git)
+
+Click the ``Deploy to IBM Cloud`` button and hit ``Create`` and then jump to step 5.
