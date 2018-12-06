@@ -1,0 +1,8 @@
+applications:
+- name: wa-elect-chat-bot
+  command: npm start
+  path: .
+  memory: 256M
+  instances: 1
+  env:
+    NPM_CONFIG_PRODUCTION: false
