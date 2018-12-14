@@ -7,5 +7,5 @@ applications:
         instances: 1
         domain: mybluemix.net
         name: Jokes
-        host: jokes.mybluemix.net
+        host: jdev-jokes
 disk_quota: 256M
