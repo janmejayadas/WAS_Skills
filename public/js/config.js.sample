@@ -1,5 +1,0 @@
-var config = {
-  URL: 'https://watson-personal-assistant-toolkit.mybluemix.net',
-  KEY: 'enter-your-WPA-key-here',
-  EXPERTISE_COLLECTION: 'your-collection'
-};
