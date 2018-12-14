@@ -1,0 +1,15 @@
+{
+  "workspace": {
+    "en-US": {
+      "name": "Watson Assistant by Jay",
+      "workspace_id": "25d41c74-3b39-45f3-b3ae-510ff9e0938d"
+    }
+  },
+  "credentials": {
+    "url": "https://gateway.watsonplatform.net/assistant/api",
+    "version": "v1",
+    "version_date": "2018-10-12",
+    "password": "DetkZPVoN1Gl",
+    "username": "b16e4837-3ac4-4caa-8bbb-4f2d3c77a3e5"
+  }
+}
