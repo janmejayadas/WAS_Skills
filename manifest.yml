@@ -5,7 +5,7 @@ applications:
         no-route: false
         memory: 128M
         instances: 1
-        domain: myblumix.net
-        name: PersonalAssistance
-        host: PersonalAssistance
+        domain: mybluemix.net
+        name: Jokes
+        host: jokes.mybluemix.net
 disk_quota: 256M
