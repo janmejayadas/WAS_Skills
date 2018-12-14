@@ -1,0 +1,159 @@
+{
+  "name": "jokes",
+  "intents": [
+    {
+      "intent": "chuck-norris-joke",
+      "examples": [
+        {
+          "text": "tell me a chuck norris joke"
+        },
+        {
+          "text": "a chuck joke"
+        },
+        {
+          "text": "a chuck norris joke"
+        },
+        {
+          "text": "give me a joke about chuck norris"
+        },
+        {
+          "text": "say a chuck norris joke"
+        },
+        {
+          "text": "tell me a joke about chuck"
+        },
+        {
+          "text": "tell me a joke about chuck norris"
+        },
+        {
+          "text": "chuck joke"
+        },
+        {
+          "text": "chuck norris joke"
+        },
+        {
+          "text": "chuck"
+        },
+        {
+          "text": "chuck norris"
+        },
+        {
+          "text": "I want to hear a chuck norris joke"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "tell-me-a-joke",
+      "examples": [
+        {
+          "text": "got any good jokes"
+        },
+        {
+          "text": "got any jokes"
+        },
+        {
+          "text": "can you tell me a joke"
+        },
+        {
+          "text": "tell me a joke"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "dad-joke",
+      "examples": [
+        {
+          "text": "I want to hear a dad joke"
+        },
+        {
+          "text": "dad joke"
+        },
+        {
+          "text": "a dad joke"
+        },
+        {
+          "text": "dad"
+        },
+        {
+          "text": "tell me a dad joke"
+        },
+        {
+          "text": "say a dad joke"
+        },
+        {
+          "text": "give me a dad joke"
+        },
+        {
+          "text": "tell me a joke about dad"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [],
+  "language": "en",
+  "metadata": {
+    "api_version": {
+      "major_version": "v1",
+      "minor_version": "2018-09-20"
+    }
+  },
+  "description": "",
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "text": {
+          "values": [
+            "I didn't understand. You can try rephrasing.",
+            "Can you reword your statement? I'm not understanding.",
+            "I didn't get your meaning."
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "metadata": {},
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_1_1512682965730"
+    },
+    {
+      "type": "standard",
+      "title": "which-joke-type",
+      "output": {
+        "text": {
+          "values": [
+            "Sure, what type of joke do you want to hear?"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "metadata": {},
+      "conditions": "#tell-me-a-joke",
+      "dialog_node": "node_1_1512682965730",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "text": {
+          "values": [
+            "Hello. How can I help you?"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "metadata": {},
+      "conditions": "welcome",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "workspace_id": "ba38454f-96ee-459b-84ff-2a4c11598ee9",
+  "counterexamples": [],
+  "learning_opt_out": false,
+  "status": "Available"
+}
