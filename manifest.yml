@@ -1,0 +1,11 @@
+applications:
+    -
+        path: .
+        buildpack: 'https://github.com/cloudfoundry/nodejs-buildpack#v1.6.21'
+        no-route: false
+        memory: 128M
+        instances: 1
+        domain: myblumix.net
+        name: PersonalAssistance
+        host: PersonalAssistance
+disk_quota: 256M
