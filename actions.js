@@ -7,16 +7,16 @@
 
 // The expertise handler
 const {handler} = require('skill-sdk-nodejs');
- const request = require('request');
- 
+
 const evaluation = 'evaluation';
 const entities = 'entities';
-	console.log("Enter into action js started:")
+
+
 // Expertise translations map
 const languageResource = {
     'en-US': {
         'translation': {
-            'HELLO_WORLD': 'Hello world',
+            'Assistance': 'Hello world',
             'TRY_AGAIN': 'Sorry, please try again later'
         }
     },
@@ -28,6 +28,7 @@ const languageResource = {
     }
 };
 
+
 /**
  *  example callback function sent to the handler.converse function, change this function to suit your needs
  * @param result - request result from WCS
@@ -37,18 +38,22 @@ const languageResource = {
  */
 
 let converseCallback = function (result, response, context, err) {
+	console.log("converseCallback started");
     // this variable would preferably come from your wcs and decide whether the session has ended
     let deleteSkillSession = false;
     if (err) {
+		console.log("converseCallback Error????");
         response.say(handler.t('TRY_AGAIN')).send();
         console.error(err);
     }
     else {
         // example of adding a card
         // example of a card sent to the application, the action and the json most of the time will come from WCS
-        response.card('some action', {"some": "json"});
+		console.log("Result from WCS==>"+result.output.text);
+      //  response.card('some action', {"some": "json"});
         response.say(result.output.text).deleteSkillSession(deleteSkillSession).send();
     }
+	console.log("converseCallback End");
 };
 
 /**
@@ -71,96 +76,58 @@ let converseCallback = function (result, response, context, err) {
  * @param err
  */
 let evaluationCallback = function(result, evaluationResponse, context, err) {
+	console.log("evaluationCallback started...");
     if(err) {
         console.error(err);
     }
     else {
-        if(!result) {
-            result = ['Nlu engine did not return an output'];
+
+	if(!result) {
+		result = ['Nlu engine did not return an output'];
         }
+console.log("Ends with evaluationCallback"+result[0]);
+
         evaluationResponse.send(result[0]);
     }
 };
-  const getJoke = function(url, callback) {
-       request.get({
-           url: url,
-           headers: { 'Accept': 'application/json' }
-           }, (err, response, body) => {
-               if (err) {
-                   callback(err);
-               } else {
-                   let result = JSON.parse(body);
-                   callback(null, result);
-               }
-           }
-       );
-   }
-   const stateDefaultActions = handler.createActionsHandler({
-   'dad-joke': (request, response, context) => {
-       getJoke(
-           "https://icanhazdadjoke.com",
-           (err, result) => {
-               if (err) {
-                   response.say("I'm sorry, I'm having trouble remembering a joke, give me second and ask again.").send();
-               } else {
-                   response.say(result.joke).send();
-               }
-           }
-       );
-   },
-   'chuck-norris-joke': (request, response, context) => {
-       getJoke(
-           "https://api.chucknorris.io/jokes/random",
-           (err, result) => {
-               if (err) {
-                   response.say("I'm sorry, I'm having trouble remembering a joke, give me second and ask again.").send();
-               } else {
-                   response.say(result.value).send();
-               }
-           }
-       );
-   },
-   'unhandled': (request, response, context) => {
-	   handler.converse(request, response, context, converseCallback);
-	   
-        response.say(handler.t('TRY_AGAIN')).send();
-    },
-	
-   });  
-  
+
 // Actions for DEFAULT state
-/*
 const stateDefaultActions = handler.createActionsHandler({
+	//console.log("stateDefaultActions started");
 
     // this is an example of an intent using a regex engine, the intent catches the phrase "hello"
-    'hello-world': (request, response, context) => {
+    
+	/*'hello-world': (request, response, context) => {
         response.say(handler.t('HELLO_WORLD')).send();
     },
+	'tell-me-a-joke': (request, response, context) => {
+        response.say(handler.t('HELLO_WORLD')).send();
+	},
+	*/
+	
     //this is an example of an intent using wcs - in order for this to work you need your own wcs workspace and intents
     //and change the intents name with your own
-	
-    'hello-world-wcs': (request, response, context) => {
+    
+	'General_Greeting': (request, response, context) => {
+        handler.converse(request, response, context, converseCallback);
+    },
+	'TechnologyArticleNews': (request, response, context) => {
         handler.converse(request, response, context, converseCallback);
     },
 	
-	
     'unhandled': (request, response, context) => {
+		console
         response.say(handler.t('TRY_AGAIN')).send();
     },
-	
-	
     //pre processing before the request evaluation
     evaluation: (request, evaluationResponse, context) => {
         handler.evaluateRequest(request, evaluationResponse, context, evaluationCallback);
     },
-	
     // this is the entities action, routing by entity will lead here
     entities: (request, response, context) => {
         handler.converse(request, response, context, converseCallback);
     }
-
-}, 'DEFAULT');*/
-
+}, 'DEFAULT');
 
 module.exports = () => {
     // Register language translations.
