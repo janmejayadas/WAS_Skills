@@ -10,7 +10,6 @@
   ],
   "nlu": [
     "wcs",
-    "regexp",
     "skill"
   ],
   "tags": [
