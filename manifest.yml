@@ -6,6 +6,6 @@ applications:
         memory: 128M
         instances: 1
         domain: mybluemix.net
-        name: Jokes
-        host: jdev-jokes
+        name: News
+        host: news-skill
 disk_quota: 256M
